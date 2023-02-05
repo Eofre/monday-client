@@ -1,13 +1,9 @@
-import { NavLink } from "../types/types";
+import { NavItem } from "../types/types";
 
-const navLinks: NavLink[] = [
+const navLinks: NavItem[] = [
   {
     path: "/",
     name: "Главная",
-  },
-  {
-    path: "/projects",
-    name: "Проекты",
   },
 ];
 

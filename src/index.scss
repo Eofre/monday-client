@@ -12,3 +12,25 @@ body {
   color: $color-text;
   font-size: $fs-middle;
 }
+
+section {
+  padding: 25px 0px;
+}
+
+ul {
+  list-style: none;
+}
+
+a,
+li {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+.active {
+  color: $color-yellow;
+}

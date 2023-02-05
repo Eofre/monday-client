@@ -2,5 +2,11 @@
 
 .header {
   background-color: $color-secondary;
-  padding: $pg-small 0px;
+  padding: $pg-middle 0px;
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
 }
