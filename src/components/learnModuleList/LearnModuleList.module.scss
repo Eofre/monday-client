@@ -2,9 +2,8 @@
 
 .list {
   display: flex;
-  flex-direction: column;
   width: 100%;
   gap: 18px;
-  // align-items: flex-start;
-  // flex-wrap: wrap;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
