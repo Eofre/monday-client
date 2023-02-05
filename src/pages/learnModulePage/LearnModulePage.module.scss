@@ -1,0 +1,27 @@
+@import "../../assets/styles/Colors.scss";
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .star {
+    font-size: 35px;
+    color: $color-four;
+    transition: all 0.3s;
+
+    &:hover {
+      outline: 69%;
+    }
+  }
+
+  .delete {
+    font-size: 30px;
+  }
+}
