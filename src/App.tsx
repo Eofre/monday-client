@@ -1,13 +1,15 @@
 import React from "react";
+import AppRouter from "./components/AppRouter";
 import Header from "./components/header/Header";
-import Home from "./pages/home/Home";
 
 function App() {
   return (
-    <>
+    <div className="App">
       <Header />
-      <Home />
-    </>
+      <main>
+        <AppRouter />
+      </main>
+    </div>
   );
 }
 

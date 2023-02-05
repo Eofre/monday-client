@@ -3,8 +3,9 @@ import { useParams } from "react-router";
 import Container from "../../components/container/Container";
 import FlipCard from "../../components/flipCard/FlipCard";
 import { LearnModule, Word } from "../../types/types";
-import styles from "./ModulePage.module.scss";
+import styles from "./LearnModulePage.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
+import GameModes from "../../components/gameModes/GameModes";
 
 interface LearnModulePageProps {
   learnModules: LearnModule[];
@@ -75,6 +76,7 @@ const LearnModulePage: FC<LearnModulePageProps> = ({ learnModules }) => {
           <div className={styles.top}>
             <h2>{learnModule.title}</h2>
           </div>
+          <GameModes />
           <div>
             <AnimatePresence>
               {showCard && (

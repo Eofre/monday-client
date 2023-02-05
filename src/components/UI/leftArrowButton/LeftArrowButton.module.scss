@@ -1,0 +1,22 @@
+@import "../../../root.scss";
+
+.btn {
+  width: 100%;
+  padding: $pg-small;
+  background-color: $color-primary;
+  border-radius: $br-small;
+  transition: all 0.3s;
+
+  &:hover {
+    outline: 2px solid $color-yellow;
+  }
+
+  &:disabled {
+    opacity: 50%;
+    cursor: auto;
+
+    &:hover {
+      outline: none;
+    }
+  }
+}

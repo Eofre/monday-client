@@ -34,3 +34,24 @@ li {
 .active {
   color: $color-yellow;
 }
+
+textarea {
+  resize: none;
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  outline: none;
+  border: none;
+}
+
+button {
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  border: none;
+  cursor: pointer;
+}

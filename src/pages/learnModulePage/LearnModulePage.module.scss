@@ -1,4 +1,4 @@
-@import "../../assets/styles/Colors.scss";
+@import "../../root.scss";
 
 .body {
   display: flex;
@@ -9,19 +9,5 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-
-  .star {
-    font-size: 35px;
-    color: $color-four;
-    transition: all 0.3s;
-
-    &:hover {
-      outline: 69%;
-    }
-  }
-
-  .delete {
-    font-size: 30px;
   }
 }

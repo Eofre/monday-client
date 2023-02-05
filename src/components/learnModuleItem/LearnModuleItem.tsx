@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { LearnModule } from "../../types/types";
 import styles from "./LearnModuleItem.module.scss";
 
@@ -8,8 +8,11 @@ interface LearnModuleItemProps {
 }
 
 const LearnModuleItem: FC<LearnModuleItemProps> = ({ learnModule }) => {
+  let navigate = useNavigate();
+
+  const handlerClick = () => navigate(`/module/${learnModule.id}`);
   return (
-    <li className={styles.item}>
+    <li className={styles.item} onClick={handlerClick}>
       <div className={styles.top}>
         <h3 className={styles.title}>{learnModule.title}</h3>
         <p className={styles.description}>{learnModule.description}</p>

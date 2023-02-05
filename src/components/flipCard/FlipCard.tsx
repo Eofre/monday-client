@@ -3,6 +3,8 @@ import styles from "./FlipCard.module.scss";
 import { Word } from "../../types/types";
 import ReactCardFlip from "react-card-flip";
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
+import RightArrowButton from "../UI/rightArrowButton/RightArrowButton";
+import LeftArrowButton from "../UI/leftArrowButton/LeftArrowButton";
 
 interface FlipCardProps {
   word: Word;
@@ -45,22 +47,14 @@ const FlipCard: FC<FlipCardProps> = ({
         </div>
         <div className={styles.btns}>
           {isDisabledButtonPrevious ? (
-            <button disabled>
-              <BiLeftArrow />
-            </button>
+            <LeftArrowButton disabled />
           ) : (
-            <button onClick={handlerClickPrevious}>
-              <BiLeftArrow />
-            </button>
+            <LeftArrowButton onClick={handlerClickPrevious} />
           )}
           {isDisabledButtonNext ? (
-            <button disabled>
-              <BiRightArrow />
-            </button>
+            <RightArrowButton disabled />
           ) : (
-            <button onClick={handlerClickNext}>
-              <BiRightArrow />
-            </button>
+            <RightArrowButton onClick={handlerClickNext} />
           )}
         </div>
       </div>
@@ -72,22 +66,14 @@ const FlipCard: FC<FlipCardProps> = ({
         <div className={styles.word}>{word.definition}</div>
         <div className={styles.btns}>
           {isDisabledButtonPrevious ? (
-            <button disabled>
-              <BiLeftArrow />
-            </button>
+            <LeftArrowButton disabled />
           ) : (
-            <button onClick={handlerClickPrevious}>
-              <BiLeftArrow />
-            </button>
+            <LeftArrowButton onClick={handlerClickPrevious} />
           )}
           {isDisabledButtonNext ? (
-            <button disabled>
-              <BiRightArrow />
-            </button>
+            <RightArrowButton disabled />
           ) : (
-            <button onClick={handlerClickNext}>
-              <BiRightArrow />
-            </button>
+            <RightArrowButton onClick={handlerClickNext} />
           )}
         </div>
       </div>
