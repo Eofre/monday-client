@@ -1,0 +1,10 @@
+@import "../../../root.scss";
+
+.button {
+  font-size: $fs-big;
+  transition: all 0.3s;
+
+  &:hover {
+    color: $color-yellow;
+  }
+}

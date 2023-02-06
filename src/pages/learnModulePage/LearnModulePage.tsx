@@ -76,7 +76,7 @@ const LearnModulePage: FC<LearnModulePageProps> = ({ learnModules }) => {
           <div className={styles.top}>
             <h2>{learnModule.title}</h2>
           </div>
-          <GameModes />
+          <GameModes idLearnModule={learnModule.id} />
           <div>
             <AnimatePresence>
               {showCard && (

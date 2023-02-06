@@ -1,12 +1,17 @@
-import React from "react";
+import React, { FC } from "react";
+import { Link } from "react-router-dom";
 import Navigation from "../navigation/Navigation";
-import gameModes from "../../data/gameModes";
+
 import styles from "./GameModes.module.scss";
 
-const GameModes = () => {
+interface GameModesProps {
+  idLearnModule: number;
+}
+
+const GameModes: FC<GameModesProps> = ({ idLearnModule }) => {
   return (
     <div className={styles.modes}>
-      <Navigation navItems={gameModes} />
+      <Link to={`/module/${idLearnModule}/hard`}>Усердная тренировка</Link>
     </div>
   );
 };

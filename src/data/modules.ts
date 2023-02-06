@@ -184,6 +184,11 @@ const modules: LearnModule[] = [
         definition: "Понедельник",
         transcription: `ˈmʌndeɪ`,
       },
+      {
+        term: "Tuesday",
+        definition: "Вторник",
+        transcription: `ˈtuːzdeɪ`,
+      },
     ],
     isFavorite: false,
   },
