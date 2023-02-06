@@ -4,6 +4,7 @@ import Container from "../../components/container/Container";
 import Countdown from "../../components/countdown/Countdown";
 import FormAnswerToQuestion from "../../components/formAnswerToQuestion/FormAnswerToQuestion";
 import { LearnModule, Word } from "../../types/types";
+import styles from "./HardModePage.module.scss";
 
 interface HardModePageProps {
   learnModules: LearnModule[];
@@ -33,6 +34,10 @@ const HardModePage: FC<HardModePageProps> = ({ learnModules }) => {
 
   function resetCountdown() {
     setSeconds(word.term.length);
+    setIsCounting(false);
+  }
+
+  function stopCountdown() {
     setIsCounting(false);
   }
 
@@ -84,7 +89,7 @@ const HardModePage: FC<HardModePageProps> = ({ learnModules }) => {
         {isResultGame ? (
           <div>Конец!</div>
         ) : (
-          <div>
+          <div className={styles.game}>
             {!isShowAnswer && (
               <Countdown
                 seconds={seconds}
