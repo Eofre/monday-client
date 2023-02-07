@@ -10,4 +10,12 @@
     align-items: center;
     justify-content: space-between;
   }
+
+  .modes {
+    transition: all 0.3s;
+
+    &:hover {
+      color: $color-yellow;
+    }
+  }
 }

@@ -2,7 +2,6 @@ import React, { FC } from "react";
 import styles from "./FlipCard.module.scss";
 import { Word } from "../../types/types";
 import ReactCardFlip from "react-card-flip";
-import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 import RightArrowButton from "../UI/rightArrowButton/RightArrowButton";
 import LeftArrowButton from "../UI/leftArrowButton/LeftArrowButton";
 

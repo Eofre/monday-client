@@ -5,7 +5,7 @@ import FlipCard from "../../components/flipCard/FlipCard";
 import { LearnModule, Word } from "../../types/types";
 import styles from "./LearnModulePage.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
-import GameModes from "../../components/gameModes/GameModes";
+import { Link } from "react-router-dom";
 
 interface LearnModulePageProps {
   learnModules: LearnModule[];
@@ -71,12 +71,19 @@ const LearnModulePage: FC<LearnModulePageProps> = ({ learnModules }) => {
 
   return (
     <section>
-      <Container>
+      <Container maxWidth="750px">
         <div className={styles.body}>
           <div className={styles.top}>
             <h2>{learnModule.title}</h2>
+            <div>
+              <Link
+                className={styles.modes}
+                to={`/module/${learnModule.id}/modes`}
+              >
+                Режимы игры
+              </Link>
+            </div>
           </div>
-          <GameModes idLearnModule={learnModule.id} />
           <div>
             <AnimatePresence>
               {showCard && (

@@ -1,3 +1,5 @@
+import { ReactElement } from "react";
+
 export interface NavItem {
   path: string;
   name: string;
@@ -17,4 +19,11 @@ export interface LearnModule {
   languageDefinition: string;
   words: Word[];
   isFavorite: boolean;
+}
+
+export interface GameMode {
+  name: string;
+  description: string;
+  path: string;
+  img: ReactElement;
 }

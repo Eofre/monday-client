@@ -1,0 +1,28 @@
+@import "../../root.scss";
+
+.mode {
+  display: flex;
+  justify-content: space-between;
+  padding: $pg-middle;
+  background-color: $color-secondary;
+  border-radius: $br-small;
+  transition: all 0.3s;
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .right {
+    font-size: $fs-very-big;
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 30px $color-yellow;
+    outline: $color-yellow 1px solid;
+    transform: scale3d(1.1, 1.1, 1.1);
+    z-index: 99;
+  }
+}
