@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { NavItem } from "../../types/types";
 import styles from "./Navigation.module.scss";
-import ListRow from "../listRow/ListRow";
+
 import INavLink from "../UI/navLink/INavLink";
 
 interface NavigationProps {
@@ -11,13 +11,13 @@ interface NavigationProps {
 const Navigation: FC<NavigationProps> = ({ navItems }) => {
   return (
     <nav>
-      <ListRow>
+      <ul className={styles.list}>
         {navItems.map((link) => (
           <li key={link.name}>
             <INavLink navItem={link} />
           </li>
         ))}
-      </ListRow>
+      </ul>
     </nav>
   );
 };

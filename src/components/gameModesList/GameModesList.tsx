@@ -17,12 +17,6 @@ const GameModesList: FC<GameModesListProps> = ({ idLearnModule }) => {
       path: `/module/${idLearnModule}/modes/hard`,
       img: <GiTimeBomb />,
     },
-    {
-      name: "Письмо",
-      description: "Лучший способ выучить слова!",
-      path: `/module/${idLearnModule}/modes/hard`,
-      img: <BsFillPenFill />,
-    },
   ];
 
   return (
