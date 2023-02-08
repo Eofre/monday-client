@@ -157,21 +157,26 @@ const modules: LearnModule[] = [
     ],
     isFavorite: true,
   },
-  // {
-  //   id: 5,
-  //   title: "Weekday",
-  //   description: "All days of the week",
-  //   languageDefinition: "русский",
-  //   languageTerm: "английкий",
-  //   words: [
-  //     {
-  //       term: "Monday",
-  //       definition: "Понедельник",
-  //       transcription: `ˈmʌndeɪ`,
-  //     },
-  //   ],
-  //   isFavorite: false,
-  // },
+  {
+    id: 5,
+    title: "Weekday",
+    description: "All days of the week",
+    languageDefinition: "русский",
+    languageTerm: "английкий",
+    words: [
+      {
+        term: "Monday",
+        definition: "Понедельник",
+        transcription: `ˈmʌndeɪ`,
+      },
+      {
+        term: "Tuesday",
+        definition: "Вторник",
+        transcription: `ˈtuːzdeɪ`,
+      },
+    ],
+    isFavorite: false,
+  },
   // {
   //   id: 6,
   //   title: "Weekday",

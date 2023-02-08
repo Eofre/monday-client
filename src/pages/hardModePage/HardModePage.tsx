@@ -4,8 +4,9 @@ import Container from "../../components/container/Container";
 import Countdown from "../../components/countdown/Countdown";
 import FormAnswerToQuestion from "../../components/formAnswerToQuestion/FormAnswerToQuestion";
 import GameStatistics from "../../components/gameStatistics/GameStatistics";
+import ResultGame from "../../components/resultGame/ResultGame";
 import StartGameForm from "../../components/startGameForm/StartGameForm";
-import { LearnModule, Word } from "../../types/types";
+import { LearnModule, UserAnswer, Word } from "../../types/types";
 import styles from "./HardModePage.module.scss";
 
 interface HardModePageProps {
@@ -17,17 +18,22 @@ const HardModePage: FC<HardModePageProps> = ({ learnModules }) => {
   const [step, setStep] = useState<number>(0);
   const learnModule: LearnModule = getLearnModuleById(Number(params.id));
   const [words, setWords] = useState<Word[]>(learnModule.words);
-  // const [word, setWord] = useState<Word>(wordsRandElement(words));
   const word: Word = words[step];
   const [isCounting, setIsCounting] = useState<boolean>(false);
   const [isResultGame, setIsResultGame] = useState<boolean>(false);
   const [isStartGame, setIsStartGame] = useState<boolean>(false);
   const [isShowAnswer, setIsShowAnswer] = useState<boolean>(false);
-  const [seconds, setSeconds] = useState<number>(15);
+  const [seconds, setSeconds] = useState<number>(10);
   const [answer, setAnswer] = useState<string>("");
   const [numberAnswers, setNumberAnswers] = useState(words.length);
   const [numberWrongAnswers, setNumberWrongAnswers] = useState(0);
   const [numberCorrectAnswers, setNumberCorrectAnswers] = useState(0);
+  const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
+
+  const isProcessGame = step !== words.length;
+
+  const isRightAnswer = isProcessGame && word.term === answer.trim();
+  const isWrongAnswer = isProcessGame && word.term !== answer.trim();
 
   function getLearnModuleById(id: number) {
     let learnModule: LearnModule = learnModules[0];
@@ -52,42 +58,63 @@ const HardModePage: FC<HardModePageProps> = ({ learnModules }) => {
   function startCountdown() {
     setIsCounting(true);
   }
+  function stopCountdown() {
+    setIsCounting(false);
+  }
 
   function sendAnswer() {
-    resetCountdown();
-    setAnswer("");
+    // resetCountdown();
 
-    if (words.length === step + 1 && word.term === answer.trim()) {
-      console.log("finish game!");
-      setIsResultGame(true);
-    } else {
-      if (word.term === answer.trim()) {
-        setStep(step + 1);
-        setNumberAnswers(numberAnswers - 1);
-        startCountdown();
-      }
-      if (word.term !== answer.trim()) {
-        setNumberWrongAnswers(numberWrongAnswers + 1);
-        setIsShowAnswer(true);
-      }
-      if (isShowAnswer && word.term === answer.trim()) {
-        setStep(step + 1);
-        setNumberAnswers(numberAnswers - 1);
-        setIsShowAnswer(false);
-        startCountdown();
-      }
-      if (word.term === answer.trim() && !isShowAnswer) {
+    if (isRightAnswer) {
+      if (!isShowAnswer) {
         setNumberCorrectAnswers(numberCorrectAnswers + 1);
+        setUserAnswers([...userAnswers, { word, answer, isRight: true }]);
+        setNumberAnswers(numberAnswers - 1);
+
+        setTimeout(() => {
+          setStep(step + 1);
+          resetCountdown();
+          startCountdown();
+          setAnswer("");
+        }, 500);
+      }
+      if (isShowAnswer) {
+        setTimeout(() => {
+          setStep(step + 1);
+          resetCountdown();
+          startCountdown();
+          setAnswer("");
+          setIsShowAnswer(false);
+        }, 500);
+      }
+    }
+    if (isWrongAnswer) {
+      if (!isShowAnswer) {
+        setNumberWrongAnswers(numberWrongAnswers + 1);
+        setUserAnswers([...userAnswers, { word, answer, isRight: false }]);
+        setNumberAnswers(numberAnswers - 1);
+
+        setTimeout(() => {
+          setIsShowAnswer(true);
+          resetCountdown();
+          setAnswer("");
+        }, 500);
+      }
+      if (isShowAnswer) {
+        setTimeout(() => {
+          setAnswer("");
+        }, 500);
       }
     }
   }
 
   function startGame() {
     setIsStartGame(true);
-    setIsCounting(true);
+    startCountdown();
   }
 
-  if (seconds === 0 && !isCounting) {
+  if (seconds === 0) {
+    stopCountdown();
     sendAnswer();
   }
 
@@ -112,8 +139,8 @@ const HardModePage: FC<HardModePageProps> = ({ learnModules }) => {
       <Container>
         {isStartGame ? (
           <>
-            {isResultGame ? (
-              <div>Конец!</div>
+            {!isProcessGame ? (
+              <ResultGame userAnswers={userAnswers} />
             ) : (
               <div className={styles.game}>
                 <GameStatistics
@@ -135,6 +162,8 @@ const HardModePage: FC<HardModePageProps> = ({ learnModules }) => {
                   handlerChangeAnswer={handlerChangeAnswer}
                   handlerClickSendAnswer={handlerClickSendAnswer}
                   isShowAnswer={isShowAnswer}
+                  isRightAnswer={isRightAnswer}
+                  isWrongAnswer={isWrongAnswer}
                 />
               </div>
             )}

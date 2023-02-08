@@ -27,3 +27,9 @@ export interface GameMode {
   path: string;
   img: ReactElement;
 }
+
+export interface UserAnswer {
+  word: Word;
+  answer: string;
+  isRight: boolean;
+}

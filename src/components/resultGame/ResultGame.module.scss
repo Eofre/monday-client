@@ -1,0 +1,29 @@
+@import "../../root.scss";
+
+.result {
+  .list {
+    display: flex;
+    width: 100%;
+    gap: 18px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    .item {
+      padding: $pg-middle;
+      background-color: $color-secondary;
+      border-radius: $br-small;
+      font-size: $fs-small;
+      flex-basis: 310px;
+    }
+
+    .wrong {
+      color: $color-red;
+      text-shadow: 0px 0px 30px $color-red;
+    }
+
+    .right {
+      color: $color-green;
+      text-shadow: 0px 0px 30px $color-green;
+    }
+  }
+}
