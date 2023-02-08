@@ -1,6 +1,14 @@
 @import "../../root.scss";
 
 .result {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .title {
+    color: $color-yellow;
+  }
+
   .list {
     display: flex;
     width: 100%;
@@ -25,5 +33,10 @@
       color: $color-green;
       text-shadow: 0px 0px 30px $color-green;
     }
+  }
+  .btns {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 7px;
   }
 }

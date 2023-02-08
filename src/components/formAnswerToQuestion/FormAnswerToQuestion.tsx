@@ -10,8 +10,7 @@ interface FormAnswerToQuestionProps {
   handlerChangeAnswer: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handlerClickSendAnswer: (event: React.MouseEvent<HTMLButtonElement>) => void;
   isShowAnswer: boolean;
-  isRightAnswer: boolean;
-  isWrongAnswer: boolean;
+  outlineInput?: string;
 }
 
 const FormAnswerToQuestion: FC<FormAnswerToQuestionProps> = ({
@@ -20,8 +19,7 @@ const FormAnswerToQuestion: FC<FormAnswerToQuestionProps> = ({
   handlerChangeAnswer,
   handlerClickSendAnswer,
   isShowAnswer,
-  isRightAnswer,
-  isWrongAnswer,
+  outlineInput,
 }) => {
   return (
     <form className={styles.form}>
@@ -38,23 +36,12 @@ const FormAnswerToQuestion: FC<FormAnswerToQuestionProps> = ({
       )}
       <p>{word.definition}</p>
       <div className={styles.send}>
-        {isRightAnswer ? (
-          <Input
-            style={{ border: "solid 1px green" }}
-            value={answer}
-            onChange={handlerChangeAnswer}
-            type="text"
-          />
-        ) : isWrongAnswer ? (
-          <Input
-            style={{ border: "solid 1px red" }}
-            value={answer}
-            onChange={handlerChangeAnswer}
-            type="text"
-          />
-        ) : (
-          <Input value={answer} onChange={handlerChangeAnswer} type="text" />
-        )}
+        <Input
+          style={{ outline: outlineInput }}
+          value={answer}
+          onChange={handlerChangeAnswer}
+          type="text"
+        />
         <SendButton onClick={handlerClickSendAnswer} />
       </div>
     </form>

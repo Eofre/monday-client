@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Container from "../../components/container/Container";
 import Countdown from "../../components/countdown/Countdown";
@@ -15,25 +15,33 @@ interface HardModePageProps {
 
 const HardModePage: FC<HardModePageProps> = ({ learnModules }) => {
   const params = useParams();
+
   const [step, setStep] = useState<number>(0);
+  const stepIncrease = 1;
+
   const learnModule: LearnModule = getLearnModuleById(Number(params.id));
-  const [words, setWords] = useState<Word[]>(learnModule.words);
+  const words: Word[] = learnModule.words;
   const word: Word = words[step];
-  const [isCounting, setIsCounting] = useState<boolean>(false);
-  const [isResultGame, setIsResultGame] = useState<boolean>(false);
-  const [isStartGame, setIsStartGame] = useState<boolean>(false);
-  const [isShowAnswer, setIsShowAnswer] = useState<boolean>(false);
-  const [seconds, setSeconds] = useState<number>(10);
+  const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
   const [answer, setAnswer] = useState<string>("");
+
+  const [seconds, setSeconds] = useState<number>(12);
+
   const [numberAnswers, setNumberAnswers] = useState(words.length);
   const [numberWrongAnswers, setNumberWrongAnswers] = useState(0);
   const [numberCorrectAnswers, setNumberCorrectAnswers] = useState(0);
-  const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
 
+  const [isCounting, setIsCounting] = useState<boolean>(false);
+  const [isStartGame, setIsStartGame] = useState<boolean>(false);
+  const [isShowAnswer, setIsShowAnswer] = useState<boolean>(false);
   const isProcessGame = step !== words.length;
-
   const isRightAnswer = isProcessGame && word.term === answer.trim();
   const isWrongAnswer = isProcessGame && word.term !== answer.trim();
+  const isCompletedAnswerTime = seconds === 0;
+
+  const score = Math.floor((numberCorrectAnswers / words.length) * 100);
+
+  const [outlineInput, setOutlineInput] = useState("");
 
   function getLearnModuleById(id: number) {
     let learnModule: LearnModule = learnModules[0];
@@ -45,66 +53,78 @@ const HardModePage: FC<HardModePageProps> = ({ learnModules }) => {
     return learnModule;
   }
 
-  function wordsRandElement(words: Word[]) {
-    let randomIndex: number = Math.floor(Math.random() * words.length);
-    return words[randomIndex];
-  }
+  //countdown
 
   function resetCountdown() {
-    setSeconds(15);
+    setSeconds(12);
     setIsCounting(false);
   }
 
   function startCountdown() {
     setIsCounting(true);
   }
-  function stopCountdown() {
-    setIsCounting(false);
+
+  //game
+
+  function sendRightAnswer() {
+    if (!isShowAnswer) {
+      setNumberCorrectAnswers(numberCorrectAnswers + 1);
+      setUserAnswers([...userAnswers, { word, answer, isRight: true }]);
+      setNumberAnswers(numberAnswers - 1);
+      setOutlineInput("2px solid rgb(160, 255, 141)");
+
+      setTimeout(() => {
+        setOutlineInput("");
+        setStep(step + stepIncrease);
+        resetCountdown();
+        startCountdown();
+        setAnswer("");
+      }, 500);
+    }
+    if (isShowAnswer) {
+      setOutlineInput("2px solid rgb(160, 255, 141)");
+
+      setTimeout(() => {
+        setStep(step + stepIncrease);
+        resetCountdown();
+        startCountdown();
+        setAnswer("");
+        setIsShowAnswer(false);
+        setOutlineInput("");
+      }, 500);
+    }
+  }
+
+  function sendWrongAnswer() {
+    if (!isShowAnswer) {
+      setNumberWrongAnswers(numberWrongAnswers + 1);
+      setUserAnswers([...userAnswers, { word, answer, isRight: false }]);
+      setNumberAnswers(numberAnswers - 1);
+      setOutlineInput("2px solid rgb(255, 105, 105)");
+
+      setTimeout(() => {
+        setIsShowAnswer(true);
+        resetCountdown();
+        setAnswer("");
+        setOutlineInput("");
+      }, 500);
+    }
+    if (isShowAnswer) {
+      setOutlineInput("2px solid rgb(255, 105, 105)");
+
+      setTimeout(() => {
+        setOutlineInput("");
+        setAnswer("");
+      }, 500);
+    }
   }
 
   function sendAnswer() {
-    // resetCountdown();
-
     if (isRightAnswer) {
-      if (!isShowAnswer) {
-        setNumberCorrectAnswers(numberCorrectAnswers + 1);
-        setUserAnswers([...userAnswers, { word, answer, isRight: true }]);
-        setNumberAnswers(numberAnswers - 1);
-
-        setTimeout(() => {
-          setStep(step + 1);
-          resetCountdown();
-          startCountdown();
-          setAnswer("");
-        }, 500);
-      }
-      if (isShowAnswer) {
-        setTimeout(() => {
-          setStep(step + 1);
-          resetCountdown();
-          startCountdown();
-          setAnswer("");
-          setIsShowAnswer(false);
-        }, 500);
-      }
+      sendRightAnswer();
     }
     if (isWrongAnswer) {
-      if (!isShowAnswer) {
-        setNumberWrongAnswers(numberWrongAnswers + 1);
-        setUserAnswers([...userAnswers, { word, answer, isRight: false }]);
-        setNumberAnswers(numberAnswers - 1);
-
-        setTimeout(() => {
-          setIsShowAnswer(true);
-          resetCountdown();
-          setAnswer("");
-        }, 500);
-      }
-      if (isShowAnswer) {
-        setTimeout(() => {
-          setAnswer("");
-        }, 500);
-      }
+      sendWrongAnswer();
     }
   }
 
@@ -113,10 +133,30 @@ const HardModePage: FC<HardModePageProps> = ({ learnModules }) => {
     startCountdown();
   }
 
-  if (seconds === 0) {
-    stopCountdown();
-    sendAnswer();
+  function restartGame() {
+    setStep(0);
+    setNumberAnswers(words.length);
+    setNumberCorrectAnswers(0);
+    setNumberWrongAnswers(0);
+    setUserAnswers([]);
   }
+
+  function exitGame() {
+    setIsStartGame(false);
+    setStep(0);
+    setNumberAnswers(words.length);
+    setNumberCorrectAnswers(0);
+    setNumberWrongAnswers(0);
+    setUserAnswers([]);
+  }
+
+  useEffect(() => {
+    if (isCompletedAnswerTime) {
+      sendAnswer();
+    }
+  }, [seconds]);
+
+  //event handlers
 
   const handlerClickSendAnswer = (
     event: React.MouseEvent<HTMLButtonElement>
@@ -134,13 +174,30 @@ const HardModePage: FC<HardModePageProps> = ({ learnModules }) => {
     startGame();
   };
 
+  const handlerClickRestartGame = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault();
+    restartGame();
+  };
+
+  const handlerClickExitGame = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    exitGame();
+  };
+
   return (
     <section>
       <Container>
         {isStartGame ? (
           <>
             {!isProcessGame ? (
-              <ResultGame userAnswers={userAnswers} />
+              <ResultGame
+                handlerClickRestartGame={handlerClickRestartGame}
+                handlerClickExitGame={handlerClickExitGame}
+                userAnswers={userAnswers}
+                score={score}
+              />
             ) : (
               <div className={styles.game}>
                 <GameStatistics
@@ -162,8 +219,7 @@ const HardModePage: FC<HardModePageProps> = ({ learnModules }) => {
                   handlerChangeAnswer={handlerChangeAnswer}
                   handlerClickSendAnswer={handlerClickSendAnswer}
                   isShowAnswer={isShowAnswer}
-                  isRightAnswer={isRightAnswer}
-                  isWrongAnswer={isWrongAnswer}
+                  outlineInput={outlineInput}
                 />
               </div>
             )}

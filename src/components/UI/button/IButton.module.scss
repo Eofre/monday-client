@@ -1,0 +1,16 @@
+@import "../../../root.scss";
+
+.button {
+  background-color: $color-yellow;
+  width: 100%;
+  color: $color-primary;
+  font-weight: 700;
+  padding: $pg-small;
+  border-radius: $br-small;
+  transition: all 0.3s;
+
+  &:hover {
+    box-shadow: 0px 0px 7px $color-yellow;
+    outline: $color-yellow 1px solid;
+  }
+}

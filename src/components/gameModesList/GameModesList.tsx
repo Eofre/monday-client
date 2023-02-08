@@ -2,7 +2,6 @@ import React, { FC } from "react";
 import { GameMode } from "../../types/types";
 import GameModesItem from "../gameModesItem/GameModeItem";
 import { GiTimeBomb } from "react-icons/gi";
-import { BsFillPenFill } from "react-icons/bs";
 import styles from "./GameModesList.module.scss";
 
 interface GameModesListProps {
@@ -13,7 +12,7 @@ const GameModesList: FC<GameModesListProps> = ({ idLearnModule }) => {
   const gamesModes: GameMode[] = [
     {
       name: "Письмо на время",
-      description: "Лучший способ выучить слова!",
+      description: "Лучший способ отточить термины до автоматизма!",
       path: `/module/${idLearnModule}/modes/hard`,
       img: <GiTimeBomb />,
     },

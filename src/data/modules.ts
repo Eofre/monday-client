@@ -89,8 +89,8 @@ const modules: LearnModule[] = [
   },
   {
     id: 3,
-    title: "DAILY ROUTINE: IN THE MORNING",
-    description: ":)",
+    title: "Daily routine",
+    description: "Daily routine: in the morning",
     languageDefinition: "русский",
     languageTerm: "английкий",
     words: [
@@ -157,28 +157,8 @@ const modules: LearnModule[] = [
     ],
     isFavorite: true,
   },
-  {
-    id: 5,
-    title: "Weekday",
-    description: "All days of the week",
-    languageDefinition: "русский",
-    languageTerm: "английкий",
-    words: [
-      {
-        term: "Monday",
-        definition: "Понедельник",
-        transcription: `ˈmʌndeɪ`,
-      },
-      {
-        term: "Tuesday",
-        definition: "Вторник",
-        transcription: `ˈtuːzdeɪ`,
-      },
-    ],
-    isFavorite: false,
-  },
   // {
-  //   id: 6,
+  //   id: 5,
   //   title: "Weekday",
   //   description: "All days of the week",
   //   languageDefinition: "русский",
@@ -197,6 +177,76 @@ const modules: LearnModule[] = [
   //   ],
   //   isFavorite: false,
   // },
+  {
+    id: 6,
+    title: "Daily routine 2",
+    description: "Daily routine: in the afternoon; in the evening; at night",
+    languageDefinition: "русский",
+    languageTerm: "английкий",
+    words: [
+      {
+        term: "Have a nap",
+        definition: "Вздремнуть",
+        transcription: ``,
+      },
+      {
+        term: "Have a snack",
+        definition: "Перекусить",
+        transcription: ``,
+      },
+      {
+        term: "Have a break",
+        definition: "Сделать перерыв",
+        transcription: ``,
+      },
+      {
+        term: "Have lunch",
+        definition: "Обедать",
+        transcription: ``,
+      },
+      {
+        term: "Make lunch",
+        definition: "Готовить обед",
+        transcription: ``,
+      },
+      {
+        term: "Have a bath",
+        definition: "Принимать ванну",
+        transcription: ``,
+      },
+      {
+        term: "Get home late",
+        definition: "Приходить домой поздно",
+        transcription: ``,
+      },
+      {
+        term: "Get home early",
+        definition: "Приходить домой рано",
+        transcription: ``,
+      },
+      {
+        term: "Call somebody",
+        definition: "Звонить кому-нибудь",
+        transcription: ``,
+      },
+      {
+        term: "Talk with my friends on the phone",
+        definition: "Разговаривтаь с друзьями по телефону",
+        transcription: ``,
+      },
+      {
+        term: "Fall asleep",
+        definition: "Засыпать",
+        transcription: ``,
+      },
+      {
+        term: "Hang out with my friends",
+        definition: "Зависать с друзьями",
+        transcription: ``,
+      },
+    ],
+    isFavorite: false,
+  },
 ];
 
 export default modules;

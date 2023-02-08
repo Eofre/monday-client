@@ -6,6 +6,7 @@ import { LearnModule, Word } from "../../types/types";
 import styles from "./LearnModulePage.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { FaEllipsisV } from "react-icons/fa";
 
 interface LearnModulePageProps {
   learnModules: LearnModule[];
@@ -75,14 +76,15 @@ const LearnModulePage: FC<LearnModulePageProps> = ({ learnModules }) => {
         <div className={styles.body}>
           <div className={styles.top}>
             <h2>{learnModule.title}</h2>
-            <div>
-              <Link
-                className={styles.modes}
-                to={`/module/${learnModule.id}/modes`}
-              >
-                Режимы игры
-              </Link>
-            </div>
+            <FaEllipsisV />
+          </div>
+          <div>
+            <Link
+              className={styles.modes}
+              to={`/module/${learnModule.id}/modes`}
+            >
+              Режимы игры
+            </Link>
           </div>
           <div>
             <AnimatePresence>
