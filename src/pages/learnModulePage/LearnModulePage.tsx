@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FaEllipsisV } from "react-icons/fa";
 import WordList from "../../components/wordList/WordList";
+import IButton from "../../components/UI/button/IButton";
 
 interface LearnModulePageProps {
   learnModules: LearnModule[];
@@ -39,6 +40,7 @@ const LearnModulePage: FC<LearnModulePageProps> = ({ learnModules }) => {
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
   const numberOfWords: number = words.length;
   const currentWord: Word = words[wordIndex];
+  const [isShowWords, setIsShowWords] = useState(false);
 
   function flippedCard() {
     setIsFlipped(!isFlipped);
@@ -71,13 +73,21 @@ const LearnModulePage: FC<LearnModulePageProps> = ({ learnModules }) => {
   const isDisabledButtonNext: boolean = wordIndex === words.length - 1;
   const isDisabledButtonPrevious: boolean = wordIndex === 0;
 
+  //handler
+
+  const handlerClickShowWords = () => {
+    setIsShowWords(!isShowWords);
+  };
+
   return (
     <section>
       <Container maxWidth="750px">
         <div className={styles.body}>
           <div className={styles.top}>
             <h2>{learnModule.title}</h2>
-            <FaEllipsisV />
+            <button>
+              <FaEllipsisV />
+            </button>
           </div>
           <div>
             <Link
@@ -110,8 +120,28 @@ const LearnModulePage: FC<LearnModulePageProps> = ({ learnModules }) => {
               )}
             </AnimatePresence>
           </div>
-          <h4>Все термины модуля:</h4>
-          <WordList words={learnModule.words} />
+          {isShowWords ? (
+            <IButton onClick={handlerClickShowWords}>
+              Скрыть все термины
+            </IButton>
+          ) : (
+            <IButton onClick={handlerClickShowWords}>
+              Показать все термины
+            </IButton>
+          )}
+          <>
+            <AnimatePresence>
+              {isShowWords && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                >
+                  <WordList words={learnModule.words} />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </>
         </div>
       </Container>
     </section>

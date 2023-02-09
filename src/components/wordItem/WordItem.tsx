@@ -11,8 +11,8 @@ const WordItem: FC<WordItemProps> = ({ word }) => {
   return (
     <div className={styles.item}>
       <span className={styles.term}>
-        {word.term}{" "}
-        {word.transcription.trim() && <>{`/${word.transcription}/`}</>}
+        {word.term}
+        {word.transcription.trim() && <>{` |${word.transcription}|`}</>}
       </span>
       <span className={styles.definition}>{word.definition}</span>
       <div className={styles.btns}>

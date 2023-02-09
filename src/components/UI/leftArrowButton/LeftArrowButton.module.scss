@@ -6,6 +6,7 @@
   background-color: $color-primary;
   border-radius: $br-small;
   transition: all 0.3s;
+  font-size: $fs-middle;
 
   &:hover {
     outline: 2px solid $color-yellow;

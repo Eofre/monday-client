@@ -25,7 +25,7 @@ const HardModePage: FC<HardModePageProps> = ({ learnModules }) => {
   const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
   const [answer, setAnswer] = useState<string>("");
 
-  const [seconds, setSeconds] = useState<number>(12);
+  const [seconds, setSeconds] = useState<number>(15);
 
   const [numberAnswers, setNumberAnswers] = useState(words.length);
   const [numberWrongAnswers, setNumberWrongAnswers] = useState(0);
@@ -56,7 +56,7 @@ const HardModePage: FC<HardModePageProps> = ({ learnModules }) => {
   //countdown
 
   function resetCountdown() {
-    setSeconds(12);
+    setSeconds(15);
     setIsCounting(false);
   }
 
