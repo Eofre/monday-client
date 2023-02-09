@@ -7,6 +7,7 @@ import styles from "./LearnModulePage.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FaEllipsisV } from "react-icons/fa";
+import WordList from "../../components/wordList/WordList";
 
 interface LearnModulePageProps {
   learnModules: LearnModule[];
@@ -86,7 +87,7 @@ const LearnModulePage: FC<LearnModulePageProps> = ({ learnModules }) => {
               Режимы игры
             </Link>
           </div>
-          <div>
+          <div style={{ height: "370px" }}>
             <AnimatePresence>
               {showCard && (
                 <motion.div
@@ -109,6 +110,8 @@ const LearnModulePage: FC<LearnModulePageProps> = ({ learnModules }) => {
               )}
             </AnimatePresence>
           </div>
+          <h4>Все термины модуля:</h4>
+          <WordList words={learnModule.words} />
         </div>
       </Container>
     </section>

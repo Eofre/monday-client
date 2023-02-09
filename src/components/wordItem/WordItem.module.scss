@@ -1,0 +1,29 @@
+@import "../../root.scss";
+
+.item {
+  padding: $pg-small 0;
+  background-color: $color-secondary;
+  border-radius: $br-small;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 0px 45px rgba(255, 255, 255, 0.016);
+
+  .term {
+    width: 40%;
+    // border-right: 3px solid $color-grey;
+    padding: 0 $pg-small;
+  }
+
+  .definition {
+    padding: 0 $pg-small;
+    width: 40%;
+  }
+
+  .btns {
+    width: 20%;
+    display: flex;
+    padding: 0 $pg-small;
+    justify-content: flex-end;
+  }
+}

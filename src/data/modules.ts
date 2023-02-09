@@ -82,7 +82,7 @@ const modules: LearnModule[] = [
       {
         term: "Nothing special. So-so",
         definition: "Ничего особенного. Так себе",
-        transcription: `[ˈnʌθɪŋ ˈspɛʃ(ə)l ˈsəʊ ˈsəʊ`,
+        transcription: `ˈnʌθɪŋ ˈspɛʃ(ə)l ˈsəʊ ˈsəʊ`,
       },
     ],
     isFavorite: true,
