@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Container from "../../components/container/Container";
 import FlipCard from "../../components/flipCard/FlipCard";
-import { LearnModule, Word } from "../../types/types";
+import { EducationalBlock, Word } from "../../types/types";
 import styles from "./LearnModulePage.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -11,14 +11,14 @@ import WordList from "../../components/wordList/WordList";
 import IButton from "../../components/UI/button/IButton";
 
 interface LearnModulePageProps {
-  learnModules: LearnModule[];
+  learnModules: EducationalBlock[];
 }
 
 const LearnModulePage: FC<LearnModulePageProps> = ({ learnModules }) => {
   const params = useParams();
 
   function getLearnModuleById(id: number) {
-    let learnModule: LearnModule = learnModules[0];
+    let learnModule: EducationalBlock = learnModules[0];
     learnModules.forEach((item) => {
       if (item.id === id) {
         learnModule = item;
@@ -26,7 +26,7 @@ const LearnModulePage: FC<LearnModulePageProps> = ({ learnModules }) => {
     });
     return learnModule;
   }
-  const [learnModule, setLearnModule] = useState<LearnModule>(
+  const [learnModule, setLearnModule] = useState<EducationalBlock>(
     getLearnModuleById(Number(params.id))
   );
 

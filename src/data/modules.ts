@@ -1,12 +1,10 @@
-import { LearnModule } from "../types/types";
+import { EducationalBlock } from "../types/types";
 
-const modules: LearnModule[] = [
+const modules: EducationalBlock[] = [
   {
     id: 1,
     title: "Weekday",
     description: "All days of the week",
-    languageDefinition: "русский",
-    languageTerm: "английкий",
     words: [
       {
         term: "Monday",
@@ -44,14 +42,12 @@ const modules: LearnModule[] = [
         transcription: `ˈsʌndeɪ`,
       },
     ],
-    isFavorite: true,
   },
   {
     id: 2,
     title: "Gustures 2",
     description: "Gestures for all occasions",
-    languageDefinition: "русский",
-    languageTerm: "английкий",
+
     words: [
       {
         term: "Let me think a bit",
@@ -85,14 +81,12 @@ const modules: LearnModule[] = [
         transcription: `ˈnʌθɪŋ ˈspɛʃ(ə)l ˈsəʊ ˈsəʊ`,
       },
     ],
-    isFavorite: true,
   },
   {
     id: 3,
     title: "Daily routine",
     description: "Daily routine: in the morning",
-    languageDefinition: "русский",
-    languageTerm: "английкий",
+
     words: [
       {
         term: "Wake up at 9",
@@ -155,7 +149,6 @@ const modules: LearnModule[] = [
         transcription: `ˈwɜːk`,
       },
     ],
-    isFavorite: true,
   },
   // {
   //   id: 5,
@@ -181,8 +174,7 @@ const modules: LearnModule[] = [
     id: 6,
     title: "Daily routine 2",
     description: "Daily routine: in the afternoon; in the evening; at night",
-    languageDefinition: "русский",
-    languageTerm: "английкий",
+
     words: [
       {
         term: "Have a nap",
@@ -245,7 +237,44 @@ const modules: LearnModule[] = [
         transcription: ``,
       },
     ],
-    isFavorite: false,
+  },
+  {
+    id: 7,
+    title: "Gestures 1",
+    description: "жесты",
+
+    words: [
+      {
+        term: "Shut up",
+        definition: "Заткнись!",
+        transcription: `ʃʌt ʌp`,
+      },
+      {
+        term: "What time is it?",
+        definition: "Который сейчас час?",
+        transcription: ``,
+      },
+      {
+        term: "Call me",
+        definition: "Позвони мне",
+        transcription: `kɔːl miː`,
+      },
+      {
+        term: "Text me",
+        definition: "Напиши мне",
+        transcription: ``,
+      },
+      {
+        term: "That's really strange",
+        definition: "Это действительно странно",
+        transcription: `ðæt ˈrɪəlɪ streɪnʤ`,
+      },
+      {
+        term: "Let's have a break",
+        definition: "Давайте сделаем перерыв",
+        transcription: ``,
+      },
+    ],
   },
 ];
 

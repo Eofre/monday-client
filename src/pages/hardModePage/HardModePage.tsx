@@ -6,11 +6,11 @@ import FormAnswerToQuestion from "../../components/formAnswerToQuestion/FormAnsw
 import GameStatistics from "../../components/gameStatistics/GameStatistics";
 import ResultGame from "../../components/resultGame/ResultGame";
 import StartGameForm from "../../components/startGameForm/StartGameForm";
-import { LearnModule, UserAnswer, Word } from "../../types/types";
+import { EducationalBlock, UserAnswer, Word } from "../../types/types";
 import styles from "./HardModePage.module.scss";
 
 interface HardModePageProps {
-  learnModules: LearnModule[];
+  learnModules: EducationalBlock[];
 }
 
 const HardModePage: FC<HardModePageProps> = ({ learnModules }) => {
@@ -19,7 +19,7 @@ const HardModePage: FC<HardModePageProps> = ({ learnModules }) => {
   const [step, setStep] = useState<number>(0);
   const stepIncrease = 1;
 
-  const learnModule: LearnModule = getLearnModuleById(Number(params.id));
+  const learnModule: EducationalBlock = getLearnModuleById(Number(params.id));
   const words: Word[] = learnModule.words;
   const word: Word = words[step];
   const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
@@ -44,7 +44,7 @@ const HardModePage: FC<HardModePageProps> = ({ learnModules }) => {
   const [outlineInput, setOutlineInput] = useState("");
 
   function getLearnModuleById(id: number) {
-    let learnModule: LearnModule = learnModules[0];
+    let learnModule: EducationalBlock = learnModules[0];
     learnModules.forEach((item) => {
       if (item.id === id) {
         learnModule = item;

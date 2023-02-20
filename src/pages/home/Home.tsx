@@ -2,10 +2,10 @@ import { FC } from "react";
 import Container from "../../components/container/Container";
 import styles from "./Home.module.scss";
 import LearnModuleList from "../../components/learnModuleList/LearnModuleList.module";
-import { LearnModule } from "../../types/types";
+import { EducationalBlock } from "../../types/types";
 
 interface HomeProps {
-  learnModules: LearnModule[];
+  learnModules: EducationalBlock[];
 }
 
 const Home: FC<HomeProps> = ({ learnModules }) => {

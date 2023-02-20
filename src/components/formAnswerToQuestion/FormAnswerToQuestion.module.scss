@@ -4,6 +4,9 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  background-color: $color-secondary;
+  padding: $pg-middle;
+  border-radius: $br-small;
 
   .send {
     display: flex;

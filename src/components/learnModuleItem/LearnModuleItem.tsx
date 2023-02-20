@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 import { useNavigate } from "react-router";
-import { LearnModule } from "../../types/types";
+import { EducationalBlock } from "../../types/types";
 import styles from "./LearnModuleItem.module.scss";
 
 interface LearnModuleItemProps {
-  learnModule: LearnModule;
+  learnModule: EducationalBlock;
 }
 
 const LearnModuleItem: FC<LearnModuleItemProps> = ({ learnModule }) => {
@@ -16,10 +16,10 @@ const LearnModuleItem: FC<LearnModuleItemProps> = ({ learnModule }) => {
       <div className={styles.top}>
         <h3 className={styles.title}>{learnModule.title}</h3>
         <p className={styles.description}>{learnModule.description}</p>
-        <div className={styles.language}>
+        {/* <div className={styles.language}>
           <p>язык термина: {learnModule.languageTerm}</p>
           <p>язык определения: {learnModule.languageDefinition}</p>
-        </div>
+        </div> */}
       </div>
       <div className={styles.bottom}>
         <p className={styles.terms}>

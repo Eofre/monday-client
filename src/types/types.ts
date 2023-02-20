@@ -11,14 +11,11 @@ export interface Word {
   transcription: string;
 }
 
-export interface LearnModule {
+export interface EducationalBlock {
   id: number;
   title: string;
   description: string;
-  languageTerm: string;
-  languageDefinition: string;
   words: Word[];
-  isFavorite: boolean;
 }
 
 export interface GameMode {
@@ -33,3 +30,36 @@ export interface UserAnswer {
   answer: string;
   isRight: boolean;
 }
+
+// store
+
+export interface EducationalBlockState {
+  educationalBlocks: EducationalBlock[];
+  loading: boolean;
+  error: null | string;
+}
+
+export enum EducationalBlocksActionTypes {
+  FETCH_EDUCATIONAL_BLOCKS = "FETCH_EDUCATIONAL-BLOCKS",
+  FETCH_EDUCATIONAL_BLOCKS_SUCCESS = "FETCH_EDUCATIONAL-BLOCKS_SUCCESS",
+  FETCH_EDUCATIONAL_BLOCKS_ERROR = "FETCH_EDUCATIONAL-BLOCKS_ERROR",
+}
+
+interface FetchEducationalBlocksAction {
+  type: EducationalBlocksActionTypes.FETCH_EDUCATIONAL_BLOCKS;
+}
+
+interface FetchEducationalBlocksSuccessAction {
+  type: EducationalBlocksActionTypes.FETCH_EDUCATIONAL_BLOCKS_SUCCESS;
+  payload: EducationalBlock[];
+}
+
+interface FetchEducationalBlocksErrorAction {
+  type: EducationalBlocksActionTypes.FETCH_EDUCATIONAL_BLOCKS_ERROR;
+  payload: string;
+}
+
+export type EducationalBlockAction =
+  | FetchEducationalBlocksAction
+  | FetchEducationalBlocksSuccessAction
+  | FetchEducationalBlocksErrorAction;

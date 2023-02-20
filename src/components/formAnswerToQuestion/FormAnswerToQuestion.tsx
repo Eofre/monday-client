@@ -31,7 +31,7 @@ const FormAnswerToQuestion: FC<FormAnswerToQuestionProps> = ({
             ответ
           </p>
           <p>Термин: {word.term}</p>
-          <p>Транскрипция: {word.transcription}</p>
+          <p>Транскрипция: |{word.transcription}|</p>
         </>
       )}
       <p>{word.definition}</p>

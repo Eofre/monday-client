@@ -1,8 +1,12 @@
 @import "../../../root.scss";
 
 .input {
-  background-color: $color-secondary;
+  background-color: $color-primary;
   border-radius: $br-small;
   padding: $pg-small;
   width: 100%;
+
+  &:focus {
+    outline: 2px solid $color-yellow;
+  }
 }
