@@ -1,12 +1,11 @@
 import { FC } from "react";
-import Container from "../../components/container/Container";
-import styles from "./GameModesPage.module.scss";
 import GameModesList from "../../components/gameModesList/GameModesList";
 import { useParams } from "react-router";
+import { Container } from "../../components/Container";
 
 interface GameModesPageProps {}
 
-const GameModesPage: FC<GameModesPageProps> = () => {
+export const GameModesPage: FC<GameModesPageProps> = () => {
   const params = useParams();
 
   return (
@@ -17,5 +16,3 @@ const GameModesPage: FC<GameModesPageProps> = () => {
     </section>
   );
 };
-
-export default GameModesPage;

@@ -1,5 +1,5 @@
-import React, { Dispatch, FC, SetStateAction, useEffect } from "react";
-import styles from "./Countdown.module.scss";
+import { Dispatch, FC, SetStateAction, useEffect } from "react";
+import classes from "./Countdown.module.scss";
 
 interface CountdownProps {
   seconds: number;
@@ -8,7 +8,7 @@ interface CountdownProps {
   setSeconds: Dispatch<SetStateAction<number>>;
 }
 
-const Countdown: FC<CountdownProps> = ({
+export const Countdown: FC<CountdownProps> = ({
   seconds,
   isCounting,
   setIsCounting,
@@ -23,7 +23,5 @@ const Countdown: FC<CountdownProps> = ({
     return () => clearInterval(timer);
   }, [isCounting, seconds, setIsCounting, setSeconds]);
 
-  return <div className={styles.countdown}>{seconds}</div>;
+  return <div className={classes.countdown}>{seconds}</div>;
 };
-
-export default Countdown;

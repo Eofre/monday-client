@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import { useParams } from "react-router";
-import Container from "../../components/container/Container";
-import Countdown from "../../components/countdown/Countdown";
+import { Container } from "../../components/Container";
+import { Countdown } from "../../components/Countdown";
 import FormAnswerToQuestion from "../../components/formAnswerToQuestion/FormAnswerToQuestion";
 import GameStatistics from "../../components/gameStatistics/GameStatistics";
 import ResultGame from "../../components/resultGame/ResultGame";

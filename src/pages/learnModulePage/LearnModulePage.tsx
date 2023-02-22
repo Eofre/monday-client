@@ -1,7 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
 import { useParams } from "react-router";
-import Container from "../../components/container/Container";
-import FlipCard from "../../components/flipCard/FlipCard";
 import { EducationalBlock, Word } from "../../types/types";
 import styles from "./LearnModulePage.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
@@ -9,6 +7,8 @@ import { Link } from "react-router-dom";
 import { FaEllipsisV } from "react-icons/fa";
 import WordList from "../../components/wordList/WordList";
 import IButton from "../../components/UI/button/IButton";
+import { Container } from "../../components/Container";
+import { FlipCard } from "../../components/FlipCard";
 
 interface LearnModulePageProps {
   learnModules: EducationalBlock[];

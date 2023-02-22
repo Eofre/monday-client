@@ -1,17 +1,13 @@
-import React, { FC } from "react";
-import styles from "./Container.module.scss";
+import { FC } from "react";
+import classes from "./Container.module.scss";
 
 interface ContainerProps {
   children: React.ReactNode;
   maxWidth?: string;
 }
 
-const Container: FC<ContainerProps> = ({ children, maxWidth }) => {
-  return (
-    <div style={{ maxWidth: maxWidth }} className={styles.container}>
-      {children}
-    </div>
-  );
-};
-
-export default Container;
+export const Container: FC<ContainerProps> = ({ children, maxWidth }) => (
+  <div style={{ maxWidth: maxWidth }} className={classes.container}>
+    {children}
+  </div>
+);

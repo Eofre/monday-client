@@ -1,9 +1,10 @@
 import { FC } from "react";
-import Container from "../container/Container";
+
 import Navigation from "../navigation/Navigation";
 import styles from "./Header.module.scss";
 import navItems from "../../data/navLinks";
 import Logo from "../logo/Logo";
+import { Container } from "../Container";
 
 const Header: FC = () => {
   return (

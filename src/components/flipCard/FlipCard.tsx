@@ -1,9 +1,9 @@
-import React, { FC } from "react";
-import styles from "./FlipCard.module.scss";
+import { FC } from "react";
+import classes from "./FlipCard.module.scss";
 import { Word } from "../../types/types";
-import ReactCardFlip from "react-card-flip";
 import RightArrowButton from "../UI/rightArrowButton/RightArrowButton";
 import LeftArrowButton from "../UI/leftArrowButton/LeftArrowButton";
+import ReactCardFlip from "react-card-flip";
 
 interface FlipCardProps {
   word: Word;
@@ -17,7 +17,7 @@ interface FlipCardProps {
   flippedCard: () => void;
 }
 
-const FlipCard: FC<FlipCardProps> = ({
+export const FlipCard: FC<FlipCardProps> = ({
   word,
   numberOfWords,
   isDisabledButtonPrevious,
@@ -34,17 +34,19 @@ const FlipCard: FC<FlipCardProps> = ({
   const isTranscription = word.transcription !== "";
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
-      <div className={styles.card} onClick={handlerClickFlipped}>
-        <div className={styles.top}>
+      <div className={classes.card} onClick={handlerClickFlipped}>
+        <div className={classes.top}>
           {cardNumber} / {numberOfWords}
         </div>
-        <div className={styles.word}>
-          <div className={styles.term}>{word.term}</div>
+        <div className={classes.word}>
+          <div className={classes.term}>{word.term}</div>
           {isTranscription && (
-            <span className={styles.transcription}>|{word.transcription}|</span>
+            <span className={classes.transcription}>
+              |{word.transcription}|
+            </span>
           )}
         </div>
-        <div className={styles.btns}>
+        <div className={classes.btns}>
           {isDisabledButtonPrevious ? (
             <LeftArrowButton disabled />
           ) : (
@@ -58,12 +60,12 @@ const FlipCard: FC<FlipCardProps> = ({
         </div>
       </div>
 
-      <div className={styles.card} onClick={handlerClickFlipped}>
-        <div className={styles.top}>
+      <div className={classes.card} onClick={handlerClickFlipped}>
+        <div className={classes.top}>
           {cardNumber} / {numberOfWords}
         </div>
-        <div className={styles.word}>{word.definition}</div>
-        <div className={styles.btns}>
+        <div className={classes.word}>{word.definition}</div>
+        <div className={classes.btns}>
           {isDisabledButtonPrevious ? (
             <LeftArrowButton disabled />
           ) : (
@@ -79,5 +81,3 @@ const FlipCard: FC<FlipCardProps> = ({
     </ReactCardFlip>
   );
 };
-
-export default FlipCard;

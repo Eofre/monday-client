@@ -1,16 +1,14 @@
-import React from "react";
-import AppRouter from "./components/AppRouter";
-import Header from "./components/header/Header";
+import { FC } from "react";
+import { AppRouter } from "./components/AppRouter";
 
-function App() {
+const App: FC = () => {
   return (
-    <div className="App">
-      <Header />
+    <>
       <main>
         <AppRouter />
       </main>
-    </div>
+    </>
   );
-}
+};
 
 export default App;
