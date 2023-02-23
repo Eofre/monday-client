@@ -21,8 +21,10 @@ export const GameModeLetterTimePage: FC<GameModeLetterTimePageProps> = ({
   const [step, setStep] = useState<number>(0);
   const stepIncrease = 1;
 
-  const learnModule: EducationalBlock = getLearnModuleById(Number(params.id));
-  const words: Word[] = learnModule.words;
+  const educationalBlock: EducationalBlock = getEducationalBlockById(
+    Number(params.id)
+  );
+  const words: Word[] = educationalBlock.words;
   const word: Word = words[step];
   const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
   const [answer, setAnswer] = useState<string>("");
@@ -45,14 +47,14 @@ export const GameModeLetterTimePage: FC<GameModeLetterTimePageProps> = ({
 
   const [outlineInput, setOutlineInput] = useState("");
 
-  function getLearnModuleById(id: number) {
-    let learnModule: EducationalBlock = educationalBlocks[0];
+  function getEducationalBlockById(id: number) {
+    let educationalBlock: EducationalBlock = educationalBlocks[0];
     educationalBlocks.forEach((item) => {
       if (item.id === id) {
-        learnModule = item;
+        educationalBlock = item;
       }
     });
-    return learnModule;
+    return educationalBlock;
   }
 
   //countdown
