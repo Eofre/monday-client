@@ -19,6 +19,26 @@ export const EducationalBlockPage: FC<EducationalBlockPageProps> = ({
 }) => {
   const params = useParams();
 
+  const educationalBlock: EducationalBlock = geteducationalBlockById(
+    Number(params.id)
+  );
+
+  const words: Word[] = educationalBlock.words;
+
+  const [wordIndex, setWordIndex] = useState(0);
+  const numberOfWords: number = words.length;
+  const currentWord: Word = words[wordIndex];
+
+  const [showCard, setShowCard] = useState<boolean>(true);
+  const [isFlipped, setIsFlipped] = useState<boolean>(false);
+  const [isShowWords, setIsShowWords] = useState(false);
+  const isDisabledButtonNext: boolean = wordIndex === words.length - 1;
+  const isDisabledButtonPrevious: boolean = wordIndex === 0;
+
+  useEffect(() => {
+    document.title = `${educationalBlock.title}`;
+  }, []);
+
   function geteducationalBlockById(id: number) {
     let educationalBlock: EducationalBlock = educationalBlocks[0];
     educationalBlocks.forEach((item) => {
@@ -28,21 +48,6 @@ export const EducationalBlockPage: FC<EducationalBlockPageProps> = ({
     });
     return educationalBlock;
   }
-  const [educationalBlock, setEducationalBlock] = useState<EducationalBlock>(
-    geteducationalBlockById(Number(params.id))
-  );
-
-  useEffect(() => {
-    document.title = `${educationalBlock.title}`;
-  }, []);
-
-  const words: Word[] = educationalBlock.words;
-  const [wordIndex, setWordIndex] = useState(0);
-  const [showCard, setShowCard] = useState<boolean>(true);
-  const [isFlipped, setIsFlipped] = useState<boolean>(false);
-  const numberOfWords: number = words.length;
-  const currentWord: Word = words[wordIndex];
-  const [isShowWords, setIsShowWords] = useState(false);
 
   function flippedCard() {
     setIsFlipped(!isFlipped);
@@ -71,9 +76,6 @@ export const EducationalBlockPage: FC<EducationalBlockPageProps> = ({
       }, 460);
     }
   }
-
-  const isDisabledButtonNext: boolean = wordIndex === words.length - 1;
-  const isDisabledButtonPrevious: boolean = wordIndex === 0;
 
   //handler
 
