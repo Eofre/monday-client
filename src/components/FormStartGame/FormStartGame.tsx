@@ -1,5 +1,5 @@
 import { FC } from "react";
-import IButton from "../UI/button/IButton";
+import { IButton } from "../UI/IButton";
 import classes from "./FormStartGame.module.scss";
 
 interface FormStartGameProps {

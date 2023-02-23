@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Word } from "../../types/types";
-import SendButton from "../UI/buttonSend/SendButton";
 import Input from "../UI/input/Input";
+import { SendButton } from "../UI/SendButton";
 import classes from "./FormAnswerQuestion.module.scss";
 
 interface FormAnswerQuestionProps {

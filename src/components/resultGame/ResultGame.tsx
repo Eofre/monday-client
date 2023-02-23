@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { BsFillEmojiSmileUpsideDownFill } from "react-icons/bs";
 import { UserAnswer } from "../../types/types";
-import IButton from "../UI/button/IButton";
+import { IButton } from "../UI/IButton";
 import classes from "./ResultGame.module.scss";
 
 interface ResultGameProps {
