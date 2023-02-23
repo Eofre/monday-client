@@ -1,14 +1,13 @@
 import { ButtonHTMLAttributes, FC } from "react";
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
+import classes from "./IButton.module.scss";
 
 interface SendButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
-const SendButton: FC<SendButtonProps> = ({ ...rest }) => {
+export const SendButton: FC<SendButtonProps> = ({ ...rest }) => {
   return (
-    <button {...rest} className={classes.button}>
+    <button {...rest} className={classes.sendButton}>
       <BsFillArrowRightSquareFill />
     </button>
   );
 };
-
-export default SendButton;
