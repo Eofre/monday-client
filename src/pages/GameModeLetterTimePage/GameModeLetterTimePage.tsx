@@ -1,19 +1,21 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Container } from "../../components/Container";
 import { Countdown } from "../../components/Countdown";
-import FormAnswerToQuestion from "../../components/formAnswerToQuestion/FormAnswerToQuestion";
-import GameStatistics from "../../components/gameStatistics/GameStatistics";
-import ResultGame from "../../components/resultGame/ResultGame";
-import StartGameForm from "../../components/startGameForm/StartGameForm";
+import { FormAnswerQuestion } from "../../components/FormAnswerQuestion";
+import { FormStartGame } from "../../components/FormStartGame";
+import { GameStatistics } from "../../components/GameStatistics";
+import { ResultGame } from "../../components/ResultGame";
 import { EducationalBlock, UserAnswer, Word } from "../../types/types";
-import styles from "./HardModePage.module.scss";
+import classes from "./GameModeLetterTimePage.module.scss";
 
-interface HardModePageProps {
-  learnModules: EducationalBlock[];
+interface GameModeLetterTimePageProps {
+  educationalBlocks: EducationalBlock[];
 }
 
-const HardModePage: FC<HardModePageProps> = ({ learnModules }) => {
+export const GameModeLetterTimePage: FC<GameModeLetterTimePageProps> = ({
+  educationalBlocks,
+}) => {
   const params = useParams();
 
   const [step, setStep] = useState<number>(0);
@@ -44,8 +46,8 @@ const HardModePage: FC<HardModePageProps> = ({ learnModules }) => {
   const [outlineInput, setOutlineInput] = useState("");
 
   function getLearnModuleById(id: number) {
-    let learnModule: EducationalBlock = learnModules[0];
-    learnModules.forEach((item) => {
+    let learnModule: EducationalBlock = educationalBlocks[0];
+    educationalBlocks.forEach((item) => {
       if (item.id === id) {
         learnModule = item;
       }
@@ -199,7 +201,7 @@ const HardModePage: FC<HardModePageProps> = ({ learnModules }) => {
                 score={score}
               />
             ) : (
-              <div className={styles.game}>
+              <div className={classes.game}>
                 <GameStatistics
                   numberAnswers={numberAnswers}
                   numberCorrectAnswers={numberCorrectAnswers}
@@ -213,7 +215,7 @@ const HardModePage: FC<HardModePageProps> = ({ learnModules }) => {
                     setIsCounting={setIsCounting}
                   />
                 )}
-                <FormAnswerToQuestion
+                <FormAnswerQuestion
                   word={word}
                   answer={answer}
                   handlerChangeAnswer={handlerChangeAnswer}
@@ -225,11 +227,9 @@ const HardModePage: FC<HardModePageProps> = ({ learnModules }) => {
             )}
           </>
         ) : (
-          <StartGameForm handlerClickStart={handlerClickStart} />
+          <FormStartGame handlerClickStart={handlerClickStart} />
         )}
       </Container>
     </section>
   );
 };
-
-export default HardModePage;

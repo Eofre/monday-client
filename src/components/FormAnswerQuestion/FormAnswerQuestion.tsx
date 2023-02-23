@@ -1,10 +1,10 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Word } from "../../types/types";
 import SendButton from "../UI/buttonSend/SendButton";
 import Input from "../UI/input/Input";
-import styles from "./FormAnswerToQuestion.module.scss";
+import classes from "./FormAnswerQuestion.module.scss";
 
-interface FormAnswerToQuestionProps {
+interface FormAnswerQuestionProps {
   word: Word;
   answer: string;
   handlerChangeAnswer: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -13,7 +13,7 @@ interface FormAnswerToQuestionProps {
   outlineInput?: string;
 }
 
-const FormAnswerToQuestion: FC<FormAnswerToQuestionProps> = ({
+export const FormAnswerQuestion: FC<FormAnswerQuestionProps> = ({
   word,
   answer,
   handlerChangeAnswer,
@@ -22,7 +22,7 @@ const FormAnswerToQuestion: FC<FormAnswerToQuestionProps> = ({
   outlineInput,
 }) => {
   return (
-    <form className={styles.form}>
+    <form className={classes.formAnswerQuestion}>
       {isShowAnswer && (
         <>
           <h2>Упс... Неверно!</h2>
@@ -35,7 +35,7 @@ const FormAnswerToQuestion: FC<FormAnswerToQuestionProps> = ({
         </>
       )}
       <p>{word.definition}</p>
-      <div className={styles.send}>
+      <div className={classes.send}>
         <Input
           style={{ outline: outlineInput }}
           value={answer}
@@ -47,5 +47,3 @@ const FormAnswerToQuestion: FC<FormAnswerToQuestionProps> = ({
     </form>
   );
 };
-
-export default FormAnswerToQuestion;

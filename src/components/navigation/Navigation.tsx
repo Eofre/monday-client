@@ -1,25 +1,22 @@
 import { FC } from "react";
 import { NavItem } from "../../types/types";
-import styles from "./Navigation.module.scss";
-
 import INavLink from "../UI/navLink/INavLink";
+import classes from "./Navigation.module.scss";
 
 interface NavigationProps {
-  navItems: NavItem[];
+  navigationItems: NavItem[];
 }
 
-const Navigation: FC<NavigationProps> = ({ navItems }) => {
+export const Navigation: FC<NavigationProps> = ({ navigationItems }) => {
   return (
     <nav>
-      <ul className={styles.list}>
-        {navItems.map((link) => (
-          <li key={link.name}>
-            <INavLink navItem={link} />
+      <ul className={classes.navigation}>
+        {navigationItems.map((navigationItem) => (
+          <li key={navigationItem.name}>
+            <INavLink navItem={navigationItem} />
           </li>
         ))}
       </ul>
     </nav>
   );
 };
-
-export default Navigation;

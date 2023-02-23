@@ -1,23 +1,23 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { FaPencilAlt } from "react-icons/fa";
 import { Word } from "../../types/types";
-import styles from "./WordItem.module.scss";
+import classes from "./WordItem.module.scss";
 
 interface WordItemProps {
   word: Word;
 }
 
-const WordItem: FC<WordItemProps> = ({ word }) => {
+export const WordItem: FC<WordItemProps> = ({ word }) => {
   return (
-    <div className={styles.item}>
-      <span className={styles.term}>
+    <div className={classes.wordItem}>
+      <span className={classes.term}>
         <span>{word.term}</span>
-        <span className={styles.transcription}>
+        <span className={classes.transcription}>
           {word.transcription.trim() && <>{` |${word.transcription}|`}</>}
         </span>
       </span>
-      <span className={styles.definition}>{word.definition}</span>
-      <div className={styles.btns}>
+      <span className={classes.definition}>{word.definition}</span>
+      <div className={classes.btns}>
         <button>
           <FaPencilAlt />
         </button>
@@ -25,5 +25,3 @@ const WordItem: FC<WordItemProps> = ({ word }) => {
     </div>
   );
 };
-
-export default WordItem;

@@ -1,22 +1,21 @@
 import { FC } from "react";
-
-import Navigation from "../navigation/Navigation";
-import styles from "./Header.module.scss";
-import navItems from "../../data/navLinks";
-import Logo from "../logo/Logo";
 import { Container } from "../Container";
+import { Logo } from "../Logo";
+import { Navigation } from "../Navigation";
+import classes from "./Header.module.scss";
+import navItems from "../../data/navLinks";
 
-const Header: FC = () => {
+interface HeaderProps {}
+
+export const Header: FC<HeaderProps> = () => {
   return (
-    <header className={styles.header}>
+    <header className={classes.header}>
       <Container>
-        <div className={styles.wrapper}>
+        <div className={classes.wrapper}>
           <Logo />
-          <Navigation navItems={navItems} />
+          <Navigation navigationItems={navItems} />
         </div>
       </Container>
     </header>
   );
 };
-
-export default Header;

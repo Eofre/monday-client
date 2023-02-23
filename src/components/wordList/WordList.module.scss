@@ -1,4 +1,6 @@
-.list {
+@import "../../root.scss";
+
+.wordList {
   display: flex;
   flex-direction: column;
   gap: 10px;

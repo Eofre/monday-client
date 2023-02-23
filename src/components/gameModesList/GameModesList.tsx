@@ -1,30 +1,30 @@
-import React, { FC } from "react";
-import { GameMode } from "../../types/types";
-import GameModesItem from "../gameModesItem/GameModeItem";
+import { FC } from "react";
 import { GiTimeBomb } from "react-icons/gi";
-import styles from "./GameModesList.module.scss";
+import { GameMode } from "../../types/types";
+import { GameModesItem } from "../GameModesItem";
+import classes from "./GameModesList.module.scss";
 
 interface GameModesListProps {
-  idLearnModule: number;
+  educationalBlockId: number;
 }
 
-const GameModesList: FC<GameModesListProps> = ({ idLearnModule }) => {
+export const GameModesList: FC<GameModesListProps> = ({
+  educationalBlockId,
+}) => {
   const gamesModes: GameMode[] = [
     {
       name: "Письмо на время",
       description: "Лучший способ отточить термины до автоматизма!",
-      path: `/module/${idLearnModule}/modes/hard`,
+      path: `/module/${educationalBlockId}/modes/hard`,
       img: <GiTimeBomb />,
     },
   ];
 
   return (
-    <ul className={styles.modes}>
+    <ul className={classes.gameModesList}>
       {gamesModes.map((mode) => (
         <GameModesItem key={mode.path} gameMode={mode} />
       ))}
     </ul>
   );
 };
-
-export default GameModesList;

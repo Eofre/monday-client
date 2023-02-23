@@ -1,4 +1,21 @@
 @import "../../root.scss";
 
 .educationalBlockPage {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .modes {
+    transition: all 0.3s;
+
+    &:hover {
+      color: $color-yellow;
+    }
+  }
 }

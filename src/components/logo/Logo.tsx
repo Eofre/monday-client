@@ -1,13 +1,13 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Link } from "react-router-dom";
-import styles from "./Logo.module.scss";
+import classes from "./Logo.module.scss";
 
-const Logo: FC = () => {
+interface LogoProps {}
+
+export const Logo: FC<LogoProps> = () => {
   return (
-    <Link className={styles.logo} to="/">
+    <Link className={classes.logo} to="/">
       {`Monday`}
     </Link>
   );
 };
-
-export default Logo;

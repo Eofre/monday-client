@@ -1,7 +1,7 @@
 import { FC } from "react";
-import GameModesList from "../../components/gameModesList/GameModesList";
 import { useParams } from "react-router";
 import { Container } from "../../components/Container";
+import { GameModesList } from "../../components/GameModesList";
 
 interface GameModesPageProps {}
 
@@ -11,7 +11,7 @@ export const GameModesPage: FC<GameModesPageProps> = () => {
   return (
     <section>
       <Container>
-        <GameModesList idLearnModule={Number(params.id)} />
+        <GameModesList educationalBlockId={Number(params.id)} />
       </Container>
     </section>
   );

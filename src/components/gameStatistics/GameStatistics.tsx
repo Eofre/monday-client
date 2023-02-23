@@ -1,7 +1,7 @@
-import React, { FC } from "react";
+import { FC } from "react";
+import classes from "./GameStatistics.module.scss";
 import { AiFillCheckSquare, AiFillCloseSquare } from "react-icons/ai";
 import { MdQuestionAnswer } from "react-icons/md";
-import styles from "./GameStatistics.module.scss";
 
 interface GameStatisticsProps {
   numberCorrectAnswers: number;
@@ -9,24 +9,22 @@ interface GameStatisticsProps {
   numberAnswers: number;
 }
 
-const GameStatistics: FC<GameStatisticsProps> = ({
+export const GameStatistics: FC<GameStatisticsProps> = ({
   numberCorrectAnswers,
   numberWrongAnswers,
   numberAnswers,
 }) => {
   return (
-    <ul className={styles.list}>
+    <ul className={classes.gameStatistics}>
       <li>
         <MdQuestionAnswer /> {numberAnswers}
       </li>
-      <li className={styles.right}>
+      <li className={classes.right}>
         <AiFillCheckSquare /> {numberCorrectAnswers}
       </li>
-      <li className={styles.wrong}>
+      <li className={classes.wrong}>
         <AiFillCloseSquare /> {numberWrongAnswers}
       </li>
     </ul>
   );
 };
-
-export default GameStatistics;

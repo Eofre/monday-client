@@ -1,15 +1,15 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Word } from "../../types/types";
-import WordItem from "../wordItem/WordItem";
-import styles from "./WordList.module.scss";
+import { WordItem } from "../WordItem";
+import classes from "./WordList.module.scss";
 
-interface WordItemProps {
+interface WordListProps {
   words: Word[];
 }
 
-const WordList: FC<WordItemProps> = ({ words }) => {
+export const WordList: FC<WordListProps> = ({ words }) => {
   return (
-    <ul className={styles.list}>
+    <ul className={classes.wordList}>
       {words.map((word) => (
         <li key={word.term}>
           <WordItem word={word} />
@@ -18,5 +18,3 @@ const WordList: FC<WordItemProps> = ({ words }) => {
     </ul>
   );
 };
-
-export default WordList;

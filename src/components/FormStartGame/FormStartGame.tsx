@@ -1,25 +1,25 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import IButton from "../UI/button/IButton";
-import styles from "./StartGameForm.module.scss";
+import classes from "./FormStartGame.module.scss";
 
-interface StartGameFormProps {
+interface FormStartGameProps {
   handlerClickStart: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const StartGameForm: FC<StartGameFormProps> = ({ handlerClickStart }) => {
+export const FormStartGame: FC<FormStartGameProps> = ({
+  handlerClickStart,
+}) => {
   return (
-    <form className={styles.form}>
+    <form className={classes.formStartGame}>
       <h3>Добро пожаловать в режим "Письмо на время"</h3>
-      <p className={styles.description}>
+      <p className={classes.description}>
         Режим служит для отточения терминов до автоматизма. На каждое слово вам
         будет данно несколько секунд.
       </p>
-      <p className={styles.description}>
+      <p className={classes.description}>
         Рекомандации: проговаривайте каждый термин вслух.
       </p>
       <IButton onClick={handlerClickStart}>Начать</IButton>
     </form>
   );
 };
-
-export default StartGameForm;
