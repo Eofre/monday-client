@@ -1,5 +1,12 @@
-import { applyMiddleware, createStore } from "redux";
-import thunk from "redux-thunk";
-import { rootReducer } from "./reducers";
+import { configureStore } from "@reduxjs/toolkit";
+import { educationalBlockApi } from "./educationBlock/educationalBlock.api";
 
-export const store = createStore(rootReducer, applyMiddleware(thunk));
+export const store = configureStore({
+  reducer: {
+    [educationalBlockApi.reducerPath]: educationalBlockApi.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(educationalBlockApi.middleware),
+});
+
+export type TypeRootState = ReturnType<typeof store.getState>;

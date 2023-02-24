@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { NavItem } from "../../types/types";
-import INavLink from "../UI/navLink/INavLink";
+import { NavigationLink } from "../UI/NavigationLink";
+
 import classes from "./Navigation.module.scss";
 
 interface NavigationProps {
@@ -13,7 +14,7 @@ export const Navigation: FC<NavigationProps> = ({ navigationItems }) => {
       <ul className={classes.navigation}>
         {navigationItems.map((navigationItem) => (
           <li key={navigationItem.name}>
-            <INavLink navItem={navigationItem} />
+            <NavigationLink item={navigationItem} />
           </li>
         ))}
       </ul>

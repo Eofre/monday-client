@@ -1,16 +1,14 @@
-import React, { ButtonHTMLAttributes, FC } from "react";
+import { ButtonHTMLAttributes, FC } from "react";
 import { BiRightArrow } from "react-icons/bi";
-import styles from "./RightArrowButton.module.scss";
+import classes from "./RightArrowButton.module.scss";
 
 interface RightArrowButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
-const RightArrowButton: FC<RightArrowButtonProps> = ({ ...rest }) => {
+export const RightArrowButton: FC<RightArrowButtonProps> = ({ ...rest }) => {
   return (
-    <button {...rest} className={styles.btn}>
+    <button {...rest} className={classes.rightArrowButton}>
       <BiRightArrow />
     </button>
   );
 };
-
-export default RightArrowButton;

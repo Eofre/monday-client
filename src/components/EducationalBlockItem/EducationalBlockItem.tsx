@@ -16,7 +16,7 @@ export const EducationalBlockItem: FC<EducationalBlockItemProps> = ({
   return (
     <li className={classes.educationalBlockItem} onClick={handlerClick}>
       <div className={classes.top}>
-        <h3 className={classes.title}>{educationalBlock.title}</h3>
+        <h3 className={classes.title}>{educationalBlock.name}</h3>
         <p className={classes.description}>{educationalBlock.description}</p>
       </div>
       <div>

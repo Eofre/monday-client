@@ -1,9 +1,9 @@
 import { FC } from "react";
 import classes from "./FlipCard.module.scss";
 import { Word } from "../../types/types";
-import RightArrowButton from "../UI/rightArrowButton/RightArrowButton";
-import LeftArrowButton from "../UI/leftArrowButton/LeftArrowButton";
 import ReactCardFlip from "react-card-flip";
+import { LeftArrowButton } from "../UI/LeftArrowButton";
+import { RightArrowButton } from "../UI/RightArrowButton";
 
 interface FlipCardProps {
   word: Word;
@@ -31,7 +31,7 @@ export const FlipCard: FC<FlipCardProps> = ({
   const handlerClickNext = () => nextCard();
   const handlerClickPrevious = () => previousCard();
   const handlerClickFlipped = () => flippedCard();
-  const isTranscription = word.transcription !== "";
+  // const isTranscription = word.transcription !== "" || word.transcription;
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
       <div className={classes.card} onClick={handlerClickFlipped}>
@@ -40,11 +40,7 @@ export const FlipCard: FC<FlipCardProps> = ({
         </div>
         <div className={classes.word}>
           <div className={classes.term}>{word.term}</div>
-          {isTranscription && (
-            <span className={classes.transcription}>
-              |{word.transcription}|
-            </span>
-          )}
+          <span className={classes.transcription}>|{word.transcription}|</span>
         </div>
         <div className={classes.btns}>
           {isDisabledButtonPrevious ? (

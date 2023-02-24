@@ -9,13 +9,9 @@ import { ResultGame } from "../../components/ResultGame";
 import { EducationalBlock, UserAnswer, Word } from "../../types/types";
 import classes from "./GameModeLetterTimePage.module.scss";
 
-interface GameModeLetterTimePageProps {
-  educationalBlocks: EducationalBlock[];
-}
+interface GameModeLetterTimePageProps {}
 
-export const GameModeLetterTimePage: FC<GameModeLetterTimePageProps> = ({
-  educationalBlocks,
-}) => {
+export const GameModeLetterTimePage: FC<GameModeLetterTimePageProps> = ({}) => {
   const params = useParams();
 
   const [step, setStep] = useState<number>(0);

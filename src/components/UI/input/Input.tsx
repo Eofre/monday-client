@@ -1,10 +1,8 @@
-import React, { FC, InputHTMLAttributes } from "react";
-import styles from "./Input.module.scss";
+import { FC, InputHTMLAttributes } from "react";
+import classes from "./Input.module.scss";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
 
-const Input: FC<InputProps> = ({ ...rest }) => {
-  return <input className={styles.input} {...rest} />;
+export const Input: FC<InputProps> = ({ ...rest }) => {
+  return <input className={classes.input} {...rest} />;
 };
-
-export default Input;
