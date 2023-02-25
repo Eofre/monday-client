@@ -5,6 +5,7 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { Container } from "../../components/Container";
 import { FlipCard } from "../../components/FlipCard";
+import { Preloader } from "../../components/Preloader";
 import { IButton } from "../../components/UI/IButton";
 import { WordList } from "../../components/WordList";
 import { useGetEducationalBlockByIdQuery } from "../../store/educationBlock/educationalBlock.api";
@@ -84,7 +85,7 @@ export const EducationalBlockPage: FC<EducationalBlockPageProps> = () => {
       <Container maxWidth="750px">
         <div className={classes.educationalBlockPage}>
           {error && <h1>Ошибка!</h1>}
-          {isLoading && <h1>Загрузка...</h1>}
+          {isLoading && <Preloader />}
           {isSuccess && (
             <>
               <div className={classes.top}>

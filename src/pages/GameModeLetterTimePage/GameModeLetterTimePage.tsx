@@ -5,7 +5,9 @@ import { Countdown } from "../../components/Countdown";
 import { FormAnswerQuestion } from "../../components/FormAnswerQuestion";
 import { FormStartGame } from "../../components/FormStartGame";
 import { GameStatistics } from "../../components/GameStatistics";
+import { Preloader } from "../../components/Preloader";
 import { ResultGame } from "../../components/ResultGame";
+import { useGetEducationalBlockByIdQuery } from "../../store/educationBlock/educationalBlock.api";
 import { EducationalBlock, UserAnswer, Word } from "../../types/types";
 import classes from "./GameModeLetterTimePage.module.scss";
 
@@ -14,12 +16,22 @@ interface GameModeLetterTimePageProps {}
 export const GameModeLetterTimePage: FC<GameModeLetterTimePageProps> = ({}) => {
   const params = useParams();
 
+  const { data, isSuccess, isLoading, error } = useGetEducationalBlockByIdQuery(
+    params.id
+  );
+
+  const educationalBlock = isSuccess
+    ? data
+    : {
+        id: 0,
+        name: "",
+        description: "",
+        words: [],
+      };
+
   const [step, setStep] = useState<number>(0);
   const stepIncrease = 1;
 
-  const educationalBlock: EducationalBlock = getEducationalBlockById(
-    Number(params.id)
-  );
   const words: Word[] = educationalBlock.words;
   const word: Word = words[step];
   const [userAnswers, setUserAnswers] = useState<UserAnswer[]>([]);
@@ -42,16 +54,6 @@ export const GameModeLetterTimePage: FC<GameModeLetterTimePageProps> = ({}) => {
   const score = Math.floor((numberCorrectAnswers / words.length) * 100);
 
   const [outlineInput, setOutlineInput] = useState("");
-
-  function getEducationalBlockById(id: number) {
-    let educationalBlock: EducationalBlock = educationalBlocks[0];
-    educationalBlocks.forEach((item) => {
-      if (item.id === id) {
-        educationalBlock = item;
-      }
-    });
-    return educationalBlock;
-  }
 
   //countdown
 
@@ -189,43 +191,49 @@ export const GameModeLetterTimePage: FC<GameModeLetterTimePageProps> = ({}) => {
   return (
     <section>
       <Container>
-        {isStartGame ? (
+        {error && <h1>Ошибка!</h1>}
+        {isLoading && <Preloader />}
+        {isSuccess && (
           <>
-            {!isProcessGame ? (
-              <ResultGame
-                handlerClickRestartGame={handlerClickRestartGame}
-                handlerClickExitGame={handlerClickExitGame}
-                userAnswers={userAnswers}
-                score={score}
-              />
-            ) : (
-              <div className={classes.game}>
-                <GameStatistics
-                  numberAnswers={numberAnswers}
-                  numberCorrectAnswers={numberCorrectAnswers}
-                  numberWrongAnswers={numberWrongAnswers}
-                />
-                {!isShowAnswer && (
-                  <Countdown
-                    seconds={seconds}
-                    setSeconds={setSeconds}
-                    isCounting={isCounting}
-                    setIsCounting={setIsCounting}
+            {isStartGame ? (
+              <>
+                {!isProcessGame ? (
+                  <ResultGame
+                    handlerClickRestartGame={handlerClickRestartGame}
+                    handlerClickExitGame={handlerClickExitGame}
+                    userAnswers={userAnswers}
+                    score={score}
                   />
+                ) : (
+                  <div className={classes.game}>
+                    <GameStatistics
+                      numberAnswers={numberAnswers}
+                      numberCorrectAnswers={numberCorrectAnswers}
+                      numberWrongAnswers={numberWrongAnswers}
+                    />
+                    {!isShowAnswer && (
+                      <Countdown
+                        seconds={seconds}
+                        setSeconds={setSeconds}
+                        isCounting={isCounting}
+                        setIsCounting={setIsCounting}
+                      />
+                    )}
+                    <FormAnswerQuestion
+                      word={word}
+                      answer={answer}
+                      handlerChangeAnswer={handlerChangeAnswer}
+                      handlerClickSendAnswer={handlerClickSendAnswer}
+                      isShowAnswer={isShowAnswer}
+                      outlineInput={outlineInput}
+                    />
+                  </div>
                 )}
-                <FormAnswerQuestion
-                  word={word}
-                  answer={answer}
-                  handlerChangeAnswer={handlerChangeAnswer}
-                  handlerClickSendAnswer={handlerClickSendAnswer}
-                  isShowAnswer={isShowAnswer}
-                  outlineInput={outlineInput}
-                />
-              </div>
+              </>
+            ) : (
+              <FormStartGame handlerClickStart={handlerClickStart} />
             )}
           </>
-        ) : (
-          <FormStartGame handlerClickStart={handlerClickStart} />
         )}
       </Container>
     </section>
