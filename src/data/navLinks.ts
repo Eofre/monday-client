@@ -2,7 +2,7 @@ import { NavItem } from "../types/types";
 
 const navLinks: NavItem[] = [
   {
-    path: "/",
+    path: "/blocks",
     name: "Модули",
   },
   {

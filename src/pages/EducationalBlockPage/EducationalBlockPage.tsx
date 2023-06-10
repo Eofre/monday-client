@@ -9,7 +9,7 @@ import { Preloader } from "../../components/Preloader";
 import { IButton } from "../../components/UI/IButton";
 import { WordList } from "../../components/WordList";
 import { useGetEducationalBlockByIdQuery } from "../../store/educationBlock/educationalBlock.api";
-import { EducationalBlock, Word } from "../../types/types";
+import { Word } from "../../types/types";
 import classes from "./EducationalBlockPage.module.scss";
 
 interface EducationalBlockPageProps {}

@@ -8,7 +8,7 @@ import { GameStatistics } from "../../components/GameStatistics";
 import { Preloader } from "../../components/Preloader";
 import { ResultGame } from "../../components/ResultGame";
 import { useGetEducationalBlockByIdQuery } from "../../store/educationBlock/educationalBlock.api";
-import { EducationalBlock, UserAnswer, Word } from "../../types/types";
+import { UserAnswer, Word } from "../../types/types";
 import classes from "./GameModeLetterTimePage.module.scss";
 
 interface GameModeLetterTimePageProps {}
@@ -190,52 +190,50 @@ export const GameModeLetterTimePage: FC<GameModeLetterTimePageProps> = ({}) => {
 
   return (
     <section>
-      <Container>
-        {error && <h1>Ошибка!</h1>}
-        {isLoading && <Preloader />}
-        {isSuccess && (
-          <>
-            {isStartGame ? (
-              <>
-                {!isProcessGame ? (
-                  <ResultGame
-                    handlerClickRestartGame={handlerClickRestartGame}
-                    handlerClickExitGame={handlerClickExitGame}
-                    userAnswers={userAnswers}
-                    score={score}
+      {error && <h1>Ошибка!</h1>}
+      {isLoading && <Preloader />}
+      {isSuccess && (
+        <>
+          {isStartGame ? (
+            <>
+              {!isProcessGame ? (
+                <ResultGame
+                  handlerClickRestartGame={handlerClickRestartGame}
+                  handlerClickExitGame={handlerClickExitGame}
+                  userAnswers={userAnswers}
+                  score={score}
+                />
+              ) : (
+                <div className={classes.game}>
+                  <GameStatistics
+                    numberAnswers={numberAnswers}
+                    numberCorrectAnswers={numberCorrectAnswers}
+                    numberWrongAnswers={numberWrongAnswers}
                   />
-                ) : (
-                  <div className={classes.game}>
-                    <GameStatistics
-                      numberAnswers={numberAnswers}
-                      numberCorrectAnswers={numberCorrectAnswers}
-                      numberWrongAnswers={numberWrongAnswers}
+                  {!isShowAnswer && (
+                    <Countdown
+                      seconds={seconds}
+                      setSeconds={setSeconds}
+                      isCounting={isCounting}
+                      setIsCounting={setIsCounting}
                     />
-                    {!isShowAnswer && (
-                      <Countdown
-                        seconds={seconds}
-                        setSeconds={setSeconds}
-                        isCounting={isCounting}
-                        setIsCounting={setIsCounting}
-                      />
-                    )}
-                    <FormAnswerQuestion
-                      word={word}
-                      answer={answer}
-                      handlerChangeAnswer={handlerChangeAnswer}
-                      handlerClickSendAnswer={handlerClickSendAnswer}
-                      isShowAnswer={isShowAnswer}
-                      outlineInput={outlineInput}
-                    />
-                  </div>
-                )}
-              </>
-            ) : (
-              <FormStartGame handlerClickStart={handlerClickStart} />
-            )}
-          </>
-        )}
-      </Container>
+                  )}
+                  <FormAnswerQuestion
+                    word={word}
+                    answer={answer}
+                    handlerChangeAnswer={handlerChangeAnswer}
+                    handlerClickSendAnswer={handlerClickSendAnswer}
+                    isShowAnswer={isShowAnswer}
+                    outlineInput={outlineInput}
+                  />
+                </div>
+              )}
+            </>
+          ) : (
+            <FormStartGame handlerClickStart={handlerClickStart} />
+          )}
+        </>
+      )}
     </section>
   );
 };

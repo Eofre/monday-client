@@ -10,9 +10,7 @@ export const GameModesPage: FC<GameModesPageProps> = () => {
 
   return (
     <section>
-      <Container>
-        <GameModesList educationalBlockId={Number(params.id)} />
-      </Container>
+      <GameModesList educationalBlockId={Number(params.id)} />
     </section>
   );
 };

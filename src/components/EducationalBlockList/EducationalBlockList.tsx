@@ -1,28 +1,25 @@
 import { FC } from "react";
-import { useGetAllEducationalBlocksQuery } from "../../store/educationBlock/educationalBlock.api";
 import { EducationalBlockItem } from "../EducationalBlockItem";
-import { Preloader } from "../Preloader";
 import classes from "./EducationalBlockList.module.scss";
+import { IEducationalBlock } from "../../types/types";
 
-interface EducationalBlockListProps {}
+interface EducationalBlockListProps {
+  list: IEducationalBlock[];
+}
 
-export const EducationalBlockList: FC<EducationalBlockListProps> = () => {
-  const { data, isSuccess, isLoading, error } =
-    useGetAllEducationalBlocksQuery("");
+export const EducationalBlockList: FC<EducationalBlockListProps> = ({
+  list,
+}) => {
   return (
     <>
-      {error && <h1>Ошибка!</h1>}
-      {isLoading && <Preloader />}
-      {isSuccess && (
-        <ul className={classes.educationalBlockList}>
-          {data.map((educationalBlock) => (
-            <EducationalBlockItem
-              key={educationalBlock.id}
-              educationalBlock={educationalBlock}
-            />
-          ))}
-        </ul>
-      )}
+      <ul className={classes.educationalBlockList}>
+        {list.map((educationalBlock) => (
+          <EducationalBlockItem
+            key={educationalBlock.id}
+            educationalBlock={educationalBlock}
+          />
+        ))}
+      </ul>
     </>
   );
 };

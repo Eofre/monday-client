@@ -1,16 +1,16 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { EducationalBlock } from "../../types/types";
+import { IEducationalBlock } from "../../types/types";
 
 export const educationalBlockApi = createApi({
   reducerPath: "educationalBlockApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/educational-block",
+    baseUrl: "http://localhost:7000/educational-block",
   }),
   endpoints: (build) => ({
-    getAllEducationalBlocks: build.query<EducationalBlock[], string>({
+    getAllEducationalBlocks: build.query<IEducationalBlock[], string>({
       query: () => "",
     }),
-    getEducationalBlockById: build.query<EducationalBlock, string | undefined>({
+    getEducationalBlockById: build.query<IEducationalBlock, string | undefined>({
       query: (id) => ({ url: `/${id}` }),
     }),
   }),

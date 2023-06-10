@@ -1,9 +1,9 @@
-import { EducationalBlock } from "../types/types";
+import { IEducationalBlock } from "../types/types";
 
-const modules: EducationalBlock[] = [
+const educationalBlocks: IEducationalBlock[] = [
   {
     id: 1,
-    title: "Weekday",
+    name: "Weekday",
     description: "All days of the week",
     words: [
       {
@@ -45,7 +45,7 @@ const modules: EducationalBlock[] = [
   },
   {
     id: 2,
-    title: "Gustures 2",
+    name: "Gustures 2",
     description: "Gestures for all occasions",
 
     words: [
@@ -84,7 +84,7 @@ const modules: EducationalBlock[] = [
   },
   {
     id: 3,
-    title: "Daily routine",
+    name: "Daily routine",
     description: "Daily routine: in the morning",
 
     words: [
@@ -150,29 +150,9 @@ const modules: EducationalBlock[] = [
       },
     ],
   },
-  // {
-  //   id: 5,
-  //   title: "Weekday",
-  //   description: "All days of the week",
-  //   languageDefinition: "русский",
-  //   languageTerm: "английкий",
-  //   words: [
-  //     {
-  //       term: "Monday",
-  //       definition: "Понедельник",
-  //       transcription: `ˈmʌndeɪ`,
-  //     },
-  //     {
-  //       term: "Tuesday",
-  //       definition: "Вторник",
-  //       transcription: `ˈtuːzdeɪ`,
-  //     },
-  //   ],
-  //   isFavorite: false,
-  // },
   {
     id: 6,
-    title: "Daily routine 2",
+    name: "Daily routine 2",
     description: "Daily routine: in the afternoon; in the evening; at night",
 
     words: [
@@ -240,9 +220,8 @@ const modules: EducationalBlock[] = [
   },
   {
     id: 7,
-    title: "Gestures 1",
+    name: "Gestures 1",
     description: "жесты",
-
     words: [
       {
         term: "Shut up",
@@ -278,4 +257,4 @@ const modules: EducationalBlock[] = [
   },
 ];
 
-export default modules;
+export default educationalBlocks;

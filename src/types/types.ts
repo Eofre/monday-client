@@ -11,7 +11,7 @@ export interface Word {
   transcription: string;
 }
 
-export interface EducationalBlock {
+export interface IEducationalBlock {
   id: number;
   name: string;
   description: string;

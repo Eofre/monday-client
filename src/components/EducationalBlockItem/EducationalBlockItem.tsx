@@ -1,16 +1,18 @@
 import { FC } from "react";
 import { useNavigate } from "react-router";
-import { EducationalBlock } from "../../types/types";
+import { IEducationalBlock } from "../../types/types";
 import classes from "./EducationalBlockItem.module.scss";
 
 interface EducationalBlockItemProps {
-  educationalBlock: EducationalBlock;
+  educationalBlock: IEducationalBlock;
 }
 
 export const EducationalBlockItem: FC<EducationalBlockItemProps> = ({
   educationalBlock,
 }) => {
   let navigate = useNavigate();
+
+  console.log(educationalBlock);
 
   const handlerClick = () => navigate(`/module/${educationalBlock.id}`);
   return (
