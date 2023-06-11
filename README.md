@@ -27,7 +27,7 @@ The project utilizes the following technologies:
 To run the project locally, follow these steps:
 
 1. Clone the repository.
-2. Navigate to the project directory: `cd mini-quizlet`.
+2. Navigate to the project directory: `cd monday-client`.
 3. Install the dependencies: `npm install`.
 4. Start the development server: `npm run dev`.
 
