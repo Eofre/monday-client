@@ -16,7 +16,7 @@ export const AppRouter: FC = () => (
       <Route index path="/module/:id/modes" element={<GameModesPage />} />
     </Route>
     <Route path="/blocks" element={<Layout />}>
-      <Route index path="/blocks" element={<EducationalBlockPage />} />
+      <Route index path="/blocks" element={<BlocksPage />} />
     </Route>
     <Route path="/module/:id/modes/" element={<LayoutGame />}>
       <Route
