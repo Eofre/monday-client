@@ -6,7 +6,7 @@ This is a project for my portfolio, which aims to create a simplified version of
 
 The project will present the following functions:
 
-- User registration and authentication: Users can create accounts, log in and log out.
+- User registration and authentication.
 - Flashcards: Users can create question and answer flashcards.
 - Flash Card Sets: Users can organize their flash cards into sets.
 - Study Mode: Users can study their flashcards using different study modes.
